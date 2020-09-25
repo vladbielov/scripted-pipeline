@@ -24,7 +24,7 @@ node {
                 git clone "https://github.com/spring-projects/spring-petclinic.git"
                 cd spring-petclinic
                 ./mvnw package
-                java -jar target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar
+                java -jar target/*.jar
                 
             }
         }
