@@ -19,14 +19,12 @@ node {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } yum install maven -y"
         }
         stage("install spring-petclinic") {
-            steps {
                 sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }" 
                 git clone "https://github.com/spring-projects/spring-petclinic.git"
                 cd spring-petclinic
                 ./mvnw package
                 java -jar target/*.jar
-                
-            }
+            
         }
     }
 }
