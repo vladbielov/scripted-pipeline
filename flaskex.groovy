@@ -18,6 +18,12 @@ node {
         stage("Install python") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } yum install python-pip -y"
         }
+        stage("Install repo") {
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } yum install -y https://repo.ius.io/ius-release-el7.rpm"
+        }
+        stage("pip update") {
+            sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } yum install -y python36u python36u-libs python36u-devel python36u-pip -y"
+        }
         stage("pip update") {
             sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE } pip install --upgrade pip"
         }         
