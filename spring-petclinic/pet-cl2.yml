@@ -1,0 +1,17 @@
+---
+- name: install pet-clinic app
+  hosts: all
+  user: centos
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: git clone 
+    git:
+      repo: https://github.com/spring-projects/spring-petclinic.git
+      dest: /root/spring-petclinic
+
+  - name: install maven package
+    command: 
+      chdir: /root/spring-petclinic
+      cmd: sh mvnw package
