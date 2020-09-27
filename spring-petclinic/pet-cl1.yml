@@ -1,0 +1,24 @@
+---
+- name: prepare install
+  hosts: all
+  user: centos
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: install prerequisites
+    package:
+      name:
+      - wget
+      - git
+
+  - name: install java
+    package:
+      name: java
+      state: latest
+
+  - name: install maven
+    package:
+      name: maven
+      state: latest 
+     
