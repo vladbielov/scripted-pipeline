@@ -1,0 +1,12 @@
+---
+- name: run app
+  hosts: all
+  user: centos
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: run app
+    command: 
+      chdir: /root/spring-petclinic
+      cmd: java -jar target/spring-petclinic-2.3.0.BUILD-SNAPSHOT.jar
