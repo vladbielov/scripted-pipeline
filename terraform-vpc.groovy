@@ -7,7 +7,7 @@ properties([
 
 node{
     stage("Pull Repo"){
-        git branch: 'master', url: 'https://github.com/ikambarov/terraform-vpc.git'
+        git branch: 'master', url: 'https://github.com/vladbielov/terraform-vpc.git'
     }
 
     withEnv(['AWS_REGION=us-east-1']) {
